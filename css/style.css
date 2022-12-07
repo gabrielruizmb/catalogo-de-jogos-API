@@ -19,13 +19,15 @@ header {
     background: #21242A;
 }
 
+/*lado esquerdo, side bar tamanho e altura*/
 aside {
-    width: 25%;
+    width: 20%;
     height: 100vh;
     float:left;
     background: #6238A9;
 }
 
+/*lado direito, conteudo*/
 article {
     height: 100vh;
     float: center;
