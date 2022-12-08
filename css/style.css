@@ -84,12 +84,6 @@ aside {
   background: #6238a9;
 }
 
-article {
-  height: 100vh;
-
-  float: center;
-}
-
 aside a {
   position: relative;
   width: 129px;
@@ -144,16 +138,21 @@ footer {
   background: #21242a;
 }
 
-::-webkit-scrollbar{
-    background: rgb(214, 214, 214);
-    border-radius: 100vw;
-    margin-block: 0.1em;
+#games-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
-::-webkit-scrollbar-track{
-    background: #292929;
+::-webkit-scrollbar {
+  background: rgb(214, 214, 214);
+  border-radius: 100vw;
+  margin-block: 0.1em;
 }
 
-::-webkit-scrollbar-thumb{
-    background: rgb(255, 255, 255);
+::-webkit-scrollbar-track {
+  background: #292929;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(255, 255, 255);
 }
