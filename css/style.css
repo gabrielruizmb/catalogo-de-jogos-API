@@ -137,6 +137,18 @@ footer {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
+article:first-child {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+
+#load-more-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
 ::-webkit-scrollbar {
   background: rgb(214, 214, 214);
   border-radius: 100vw;

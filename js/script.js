@@ -9,22 +9,8 @@ const options = {
 		'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'
 	}
 };
-/*
-// função que cria o card dos jogos usando o conteúdo da struct recebida da API
-function createCard(data) {
-    let gameCard = document.createElement('article');
-    gameCard.innerHTML = `
-        <a href="${data[0].game_url}">
-        <img src="${data[0].thumbnail}">
-        <h1>${data[0].title}</h1>
-        <p>${data[0].genre}</p>
-        <p>${data[0].platform}</p>
-        </a>
-    `;
-    gamesList.appendChild(gameCard);
-}
-*/
 
+// função que cria o card dos jogos usando o conteúdo da struct recebida da API
 function createCard(data) {
   
   for (let i = 0; i < data.length; i++){
