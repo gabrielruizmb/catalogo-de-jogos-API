@@ -16,16 +16,13 @@ body {
   background: #292929;
 }
 
-a {
-  z-index: 1;
-}
-
 header {
+  position: fixed;
   width: 100%;
-  padding: 20px 10px;
+  padding-left: 10px;
+  height: 70px;
 
   display: flex;
-  flex-direction: row;
   gap: 10%;
 
   background: #21242a;
@@ -45,6 +42,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: translateX(25%);
 }
 
 .nav_links {
@@ -61,51 +59,15 @@ nav {
   display: flex;
 }
 
-/* .nav_links a {
-  padding: 12px 30px;
-  margin: 0px 40px;
-
-  cursor: pointer;
-
-  font-size: 18px;
-  color: #fefeff;
-  text-decoration: none;
-
-  border: none;
-  border-radius: 10px;
-  background: none;
-}
-
-.nav_links a:hover,
-.nav_links a:focus {
-  border-radius: 10px;
-  background: #6238a9;
-} */
-
-aside {
-  width: 16%;
-  height: 870px;
-
-  float: left;
-
-  background: #6238a9;
-}
-
-article {
-  height: 100vh;
-
-  float: center;
-}
-
-aside a {
-  position: relative;
-  width: 129px;
+.nav_links label{
+  width: 127px;
   height: 48px;
 
   display: flex;
   align-items: center;
+  justify-content: space-around;
 
-  font-size: 20px;
+  font-size: 1rem;
   color: #fff;
 
   border: none;
@@ -114,8 +76,35 @@ aside a {
   text-decoration: none;
 }
 
-label {
-  position: relative;
+aside {
+  position: fixed;
+  bottom: 50px;
+  top: 70px;
+  width: 16%;
+  height: 633px;
+
+  float: left;
+
+  background: #6238a9;
+}
+
+aside ul {
+  width: 100%;
+  height: inherit;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  list-style: none;
+}
+
+.side_radio{
+  display: flex;
+}
+
+.side_radio label {
   width: 150px;
   height: 48px;
 
@@ -132,6 +121,7 @@ label {
   text-decoration: none;
 }
 
+
 input[type="radio"] {
   appearance: none;
 }
@@ -141,8 +131,18 @@ input[type="radio"] {
   border-radius: 10px;
 }
 
+.side_radio input ~ label:hover{
+  background-color: rgb(28, 34, 41, 0.5);
+  border-radius: 10px;
+}
+
 .nav_links input:checked ~ label{
   background: #6238a9;
+  border-radius: 10px;
+}
+
+.nav_links input ~ label:hover{
+  background: rgb(98, 56, 169, 0.7);
   border-radius: 10px;
 }
 
@@ -156,32 +156,33 @@ input[type="radio"] {
   height: 20px;
 }
 
-aside ul {
-  width: 100%;
-  margin: auto;
-
-  display: flex;
+#games-list {
+  position: relative;
+  left: 246px;
+  top: 70px;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-
-  list-style: none;
+  height: fit-content;
+  display: flex;
+  z-index: -1;
+  max-width: 1290px;
+  flex-wrap: wrap;
 }
 
-footer {
-  position: relative;
+#footer {
+  position: fixed;
   bottom: 0;
   width: 100%;
-  height: 80px;
-  margin-top: -100px;
+  height: 50px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  clear: both;
-
   background: #21242a;
+}
+
+#footer h1{
+  font-size: 1.4rem;
 }
 
 ::-webkit-scrollbar {
