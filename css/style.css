@@ -1,5 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,500;0,600;0,700;0,900;1,800&display=swap");
 
+:root {
+  --main-color: #6238a9;
+  --secondary-color: #292929;
+  --header-footer-color: #21242a;
+  --font-color: #fefeff;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -13,19 +20,20 @@ body {
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
 
-  background: #292929;
+  background: var(--secondary-color);
 }
 
 header {
   position: fixed;
   width: 100%;
+  padding: 11px 0;
   padding-left: 10px;
-  height: 70px;
+  /* height: 70px; */
 
   display: flex;
   gap: 10%;
 
-  background: #21242a;
+  background: var(--header-footer-color);
 }
 
 header h1 {
@@ -35,7 +43,7 @@ header h1 {
 
   font-size: 1.4rem;
 
-  color: #a6afa7;
+  color: var(--font-color);
 }
 
 nav {
@@ -59,7 +67,7 @@ nav {
   display: flex;
 }
 
-.nav_links label{
+.nav_links label {
   width: 127px;
   height: 48px;
 
@@ -68,7 +76,7 @@ nav {
   justify-content: space-around;
 
   font-size: 1rem;
-  color: #fff;
+  color: var(--font-color);
 
   border: none;
   outline: none;
@@ -80,12 +88,12 @@ aside {
   position: fixed;
   bottom: 50px;
   top: 70px;
-  width: 16%;
+  width: 220px;
   height: 633px;
 
   float: left;
 
-  background: #6238a9;
+  background: var(--main-color);
 }
 
 aside ul {
@@ -100,7 +108,7 @@ aside ul {
   list-style: none;
 }
 
-.side_radio{
+.side_radio {
   display: flex;
 }
 
@@ -113,14 +121,13 @@ aside ul {
   justify-content: space-around;
 
   font-size: 1rem;
-  color: #fff;
+  color: var(--font-color);
 
   border: none;
   outline: none;
   cursor: pointer;
   text-decoration: none;
 }
-
 
 input[type="radio"] {
   appearance: none;
@@ -131,22 +138,22 @@ input[type="radio"] {
   border-radius: 10px;
 }
 
-.side_radio input ~ label:hover{
+.side_radio input ~ label:hover {
   background-color: rgb(28, 34, 41, 0.5);
   border-radius: 10px;
 }
 
-.nav_links input:checked ~ label{
-  background: #6238a9;
+.nav_links input:checked ~ label {
+  background: var(--main-color);
   border-radius: 10px;
 }
 
-.nav_links input ~ label:hover{
+.nav_links input ~ label:hover {
   background: rgb(98, 56, 169, 0.7);
   border-radius: 10px;
 }
 
-.side_radio p{
+.side_radio p {
   min-width: 90px;
   text-align: center;
 }
@@ -156,7 +163,7 @@ input[type="radio"] {
   height: 20px;
 }
 
-#games-list {
+#games_list {
   position: relative;
   left: 246px;
   top: 70px;
@@ -164,8 +171,74 @@ input[type="radio"] {
   height: fit-content;
   display: flex;
   z-index: -1;
-  max-width: 1290px;
+  max-width: 1190px;
   flex-wrap: wrap;
+
+  color: var(--font-color);
+  display: grid;
+}
+
+#game_card {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 3%;
+  margin-top: 2%;
+  border: 1px solid black;
+}
+
+#thumbnail {
+  border: 4.5px solid rgb(98, 56, 169);
+  border-radius: 20px;
+  width: fit-content;
+  height: fit-content;
+  opacity: 0.8;
+}
+
+#short_description {
+  max-width: 350px;
+  text-align: justify;
+}
+
+#game_type {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+#game_type p {
+  padding: 2px 5px;
+
+  border: 2px solid rgb(97, 56, 169);
+  border-radius: 5px;
+
+  background-color: rgb(98, 56, 169, 0.7);
+}
+
+#overay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+  background-color: #008cba;
+}
+
+#content:hover #overlay {
+  opacity: 1;
+}
+
+#short_description {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 #footer {
@@ -178,10 +251,10 @@ input[type="radio"] {
   align-items: center;
   justify-content: center;
 
-  background: #21242a;
+  background: var(--header-footer-color);
 }
 
-#footer h1{
+#footer h1 {
   font-size: 1.4rem;
 }
 
