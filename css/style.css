@@ -14,8 +14,10 @@
 }
 
 body {
-  width: 100%;
-  height: 100%;
+  position: relative;
+  
+  width: 100vw;
+  height: 100vh;
 
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
@@ -25,18 +27,19 @@ body {
 
 header {
   position: fixed;
+  z-index: 1;
+
   width: 100%;
   padding: 11px 0;
   padding-left: 10px;
-  /* height: 70px; */
 
   display: flex;
-  gap: 10%;
 
   background: var(--header-footer-color);
 }
 
 header h1 {
+  min-width: 233px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -88,7 +91,8 @@ aside {
   position: fixed;
   bottom: 50px;
   top: 70px;
-  width: 220px;
+  width: 15%;
+  min-width: 200px;
   height: 633px;
 
   float: left;
@@ -163,7 +167,31 @@ input[type="radio"] {
   height: 20px;
 }
 
-#games_list {
+#games_list{
+  position: relative;
+  left: 300px;
+  top: 70px;
+  max-width: 1190px;
+
+  display: grid;
+
+  z-index: 0;
+
+  color: var(--font-color);
+}
+
+#game_card{
+  margin: 3%;
+  margin-top: 2%;
+}
+
+#game_card:first-child{
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+
+/* #games_list {
+  width: 75%;
   position: relative;
   left: 246px;
   top: 70px;
@@ -173,9 +201,7 @@ input[type="radio"] {
   z-index: -1;
   max-width: 1190px;
   flex-wrap: wrap;
-
-  color: var(--font-color);
-  display: grid;
+  margin: 0;
 }
 
 #game_card {
@@ -185,7 +211,10 @@ input[type="radio"] {
   margin: 3%;
   margin-top: 2%;
   border: 1px solid black;
-}
+  grid-column-start: 2;
+  grid-column-end: 4;
+  width: fit-content;
+} */
 
 #thumbnail {
   border: 4.5px solid rgb(98, 56, 169);
@@ -213,33 +242,8 @@ input[type="radio"] {
   border-radius: 5px;
 
   background-color: rgb(98, 56, 169, 0.7);
-}
+} 
 
-#overay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  transition: 0.5s ease;
-  background-color: #008cba;
-}
-
-#content:hover #overlay {
-  opacity: 1;
-}
-
-#short_description {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
 
 #footer {
   position: fixed;
