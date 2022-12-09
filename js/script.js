@@ -1,5 +1,8 @@
 // Pega a section do html que irá conter os cards dos jogos.
 let gamesList = document.getElementById('games-list');
+let loadButton = document.getElementById('load-more-button');
+loadButton.addEventListener('click', searchInApi);
+let listCounting = 0;
 
 // Coloca o método "GET" e a chave de acesso a API em uma const.
 const options = {
@@ -13,7 +16,7 @@ const options = {
 // função que cria o card dos jogos usando o conteúdo da struct recebida da API
 function createCard(data) {
   
-  for (let i = 0; i < data.length; i++){
+  for (let i = listCounting; i < listCounting + 10; i++){
     let gameCard = document.createElement('article');
     gameCard.innerHTML = `
         <a href="${data[i].game_url}">
@@ -25,6 +28,7 @@ function createCard(data) {
     `;
     gamesList.appendChild(gameCard);
   }
+  listCounting += 10;
 }
 
 // função que acessa a API
