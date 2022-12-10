@@ -14,10 +14,12 @@
 }
 
 body {
-  position: relative;
-  
   width: 100vw;
   height: 100vh;
+
+  display: grid;
+  grid-template-columns: 1fr 7fr;
+  grid-template-rows: 10vh 80vh 10vh;
 
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
@@ -26,20 +28,18 @@ body {
 }
 
 header {
-  position: fixed;
-  z-index: 1;
-
-  width: 100%;
   padding: 11px 0;
-  padding-left: 10px;
 
   display: flex;
+  grid-column: 1/7;
+  gap: 10%;
 
   background: var(--header-footer-color);
 }
 
 header h1 {
-  min-width: 233px;
+  min-width: 250px;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,7 +53,6 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translateX(25%);
 }
 
 .nav_links {
@@ -88,14 +87,10 @@ nav {
 }
 
 aside {
-  position: fixed;
-  bottom: 50px;
-  top: 70px;
-  width: 15%;
-  min-width: 200px;
-  height: 633px;
-
-  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column: 1/2;
 
   background: var(--main-color);
 }
@@ -167,54 +162,27 @@ input[type="radio"] {
   height: 20px;
 }
 
-#games_list{
-  position: relative;
-  left: 300px;
-  top: 70px;
-  max-width: 1190px;
-
+#games_list {
   display: grid;
-
-  z-index: 0;
+  grid-column: 2/7;
+  align-items: center;
+  grid-auto-flow: row;
+  grid-auto-rows: 25%; /* play with this to change height of the children, 50% will fill half */
+  grid-template-columns: unset; /* do not set template columns and rows */
+  grid-template-rows: unset;
+  overflow: scroll;
 
   color: var(--font-color);
 }
 
-#game_card{
-  margin: 3%;
-  margin-top: 2%;
-}
-
-#game_card:first-child{
-  grid-column-start: 2;
-  grid-column-end: 4;
-}
-
-/* #games_list {
-  width: 75%;
-  position: relative;
-  left: 246px;
-  top: 70px;
-  flex-direction: column;
-  height: fit-content;
-  display: flex;
-  z-index: -1;
-  max-width: 1190px;
-  flex-wrap: wrap;
-  margin: 0;
-}
-
 #game_card {
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 3%;
-  margin-top: 2%;
-  border: 1px solid black;
+  margin-top: 300px;
+}
+
+#game_card:first-child {
   grid-column-start: 2;
   grid-column-end: 4;
-  width: fit-content;
-} */
+}
 
 #thumbnail {
   border: 4.5px solid rgb(98, 56, 169);
@@ -242,18 +210,14 @@ input[type="radio"] {
   border-radius: 5px;
 
   background-color: rgb(98, 56, 169, 0.7);
-} 
-
+}
 
 #footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 50px;
-
   display: flex;
   align-items: center;
   justify-content: center;
+
+  grid-column: 1/7;
 
   background: var(--header-footer-color);
 }
