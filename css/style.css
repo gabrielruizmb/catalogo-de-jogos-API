@@ -192,19 +192,23 @@ input[type="radio"] {
 }
 
 #thumbnail {
+  width: fit-content;
+  height: fit-content;
+
   position: relative;
+
+  cursor: pointer;
 
   border: 4.5px solid rgb(98, 56, 169);
   border-radius: 20px;
-  width: fit-content;
-  height: fit-content;
   opacity: 0.8;
 }
 
-#short_description {
-  position: absolute;
-  opacity: 0;
+.overlay {
+  display: none;
+}
 
+.short_description {
   max-width: 350px;
   text-align: justify;
 }
