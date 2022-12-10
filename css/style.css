@@ -19,7 +19,7 @@ body {
 
   display: grid;
   grid-template-columns: 1fr 7fr;
-  grid-template-rows: 10vh 80vh 10vh;
+  grid-template-rows: 10vh auto 10vh;
 
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
@@ -40,12 +40,6 @@ header {
   z-index: 1;
 
   background: var(--header-footer-color);
-}
-
-@media (max-width: 1250px) {
-  .nav_links li {
-    flex-direction: column;
-  }
 }
 
 header h1 {
@@ -269,6 +263,8 @@ input[type="radio"] {
 /* ----- FOOTER ----- */
 
 #footer {
+  min-height: 50px;
+
   display: flex;
   align-items: center;
   justify-content: center;
