@@ -225,6 +225,8 @@ input[type="radio"] {
   display: flex;
   flex-direction: row;
   gap: 10px;
+
+  cursor: pointer;
 }
 
 #game_type p {
