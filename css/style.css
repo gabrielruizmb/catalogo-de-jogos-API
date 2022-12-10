@@ -167,16 +167,14 @@ input[type="radio"] {
   grid-column: 2/7;
   align-items: center;
   grid-auto-flow: row;
-  grid-auto-rows: 25%; /* play with this to change height of the children, 50% will fill half */
+  grid-auto-rows: 70%; /* play with this to change height of the children, 50% will fill half */
   grid-template-columns: unset; /* do not set template columns and rows */
   grid-template-rows: unset;
   overflow: scroll;
 
-  color: var(--font-color);
-}
+  justify-content: space-evenly;
 
-#game_card {
-  margin-top: 300px;
+  color: var(--font-color);
 }
 
 #game_card:first-child {
