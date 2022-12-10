@@ -23,6 +23,7 @@ body {
 
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
+  color: var(--font-color);
 
   background: var(--secondary-color);
 }
@@ -45,8 +46,6 @@ header h1 {
   justify-content: center;
 
   font-size: 1.4rem;
-
-  color: var(--font-color);
 }
 
 nav {
@@ -77,9 +76,6 @@ nav {
   align-items: center;
   justify-content: space-around;
 
-  font-size: 1rem;
-  color: var(--font-color);
-
   border: none;
   outline: none;
   cursor: pointer;
@@ -96,9 +92,6 @@ aside {
 }
 
 aside ul {
-  width: 100%;
-  height: inherit;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -109,6 +102,7 @@ aside ul {
 
 .side_radio {
   display: flex;
+  padding: 2px;
 }
 
 .side_radio label {
@@ -120,7 +114,6 @@ aside ul {
   justify-content: space-around;
 
   font-size: 1rem;
-  color: var(--font-color);
 
   border: none;
   outline: none;
@@ -167,9 +160,9 @@ input[type="radio"] {
   grid-column: 2/7;
   align-items: center;
   grid-auto-flow: row;
-  grid-auto-rows: 70%; /* play with this to change height of the children, 50% will fill half */
-  grid-template-columns: unset; /* do not set template columns and rows */
-  grid-template-rows: unset;
+  grid-auto-rows: 60%; /* alterar caso queria mudar espaçamento */
+  grid-template-columns: unset; /* não mexer */
+  grid-template-rows: unset; /* não mexer */
   overflow: scroll;
 
   justify-content: space-evenly;
