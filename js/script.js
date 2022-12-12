@@ -3,6 +3,26 @@ let gamesList = document.getElementById('games-list');
 let loadButton = document.getElementById('load-more-button');
 loadButton.addEventListener('click', searchInApi);
 let listCounting = 0;
+let currentGenre = 'sort-by=popularity';
+let currentPlatform = '&platform=all';
+let currentUrl = currentGenre + currentPlatform;
+
+let pcButton = document.getElementById('pc-button');
+let mmorpgButton = document.getElementById('mmorpg-button');
+pcButton.addEventListener('click', function(){changePlatform("&platform=pc")});
+mmorpgButton.addEventListener('click', function(){changeGenre("genre=mmorpg")});
+
+function changeGenre(selectedGenre) {
+  currentGenre = selectedGenre;
+  currentUrl = currentGenre + currentGenre;
+  searchInApi(currentUrl);
+}
+
+function changePlatform(selectedPlatform) {
+  currentPlatform = selectedPlatform;
+  currentUrl = currentGenre + currentPlatform;
+  searchInApi(currentUrl);
+}
 
 // Coloca o método "GET" e a chave de acesso a API em uma const.
 const options = {
@@ -21,10 +41,10 @@ function createCard(data) {
     gameCard.innerHTML = `
         <a href="${data[i].game_url}">
         <img src="${data[i].thumbnail}">
+        </a>
         <h1>${data[i].title}</h1>
         <p>${data[i].genre}</p>
         <p>${data[i].platform}</p>
-        </a>
     `;
     gamesList.appendChild(gameCard);
   }
@@ -32,9 +52,9 @@ function createCard(data) {
 }
 
 // função que acessa a API
-function searchInApi() { // como exemplo, está buscando por popularidade e 
+function searchInApi(currentUrl) { // como exemplo, está buscando por popularidade e 
                          // para todas as plataformas(pc e browser)
-    fetch('https://free-to-play-games-database.p.rapidapi.com/api/games?sort-by=popularity&platform=all', options)
+    fetch(`https://free-to-play-games-database.p.rapidapi.com/api/games?${currentUrl}`, options)
         .then((response) => {
             response.json()                  // se der certo, recebe a struct
             .then(data => createCard(data)); // com os dados dos jogos, e chama
@@ -42,4 +62,4 @@ function searchInApi() { // como exemplo, está buscando por popularidade e
         .catch(() => alert("Houve algum erro!"));
 }       // se der errado, exibe mensagem de erro na tela.
 
-searchInApi();
+searchInApi(currentUrl);
