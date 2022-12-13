@@ -1,38 +1,69 @@
+const options = {
+  method: 'GET',
+  headers: {
+    'X-RapidAPI-Key': '8986061a9cmsh5eca69595d7c116p175199jsn2ef0c3a4413c',
+    'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'
+  }
+};
+
 // Pega a section do html que irá conter os cards dos jogos.
 let gamesList = document.getElementById('games_list');
-let currentGenre = 'sort-by=popularity';
-let currentPlatform = '&platform=all';
-let currentUrl = currentGenre + currentPlatform;
 let listCounting = 0;
+
+let currentCategory = 'sort-by=popularity';
+let currentPlatform = '&platform=all';
+let currentUrl = currentCategory + currentPlatform;
+
+let allButton = document.getElementById('all');
+let pcButton = document.getElementById('windows');
+let browserButton = document.getElementById('browser');
+
+let homeButton = document.getElementById('home');
+let animeButton = document.getElementById('anime');
+let fantasyButton = document.getElementById('fantasy');
+let mmorpgButton = document.getElementById('MMORPG');
+let racingButton = document.getElementById('racing');
+let sciFiButton = document.getElementById('sci-fi');
+let shooterButton = document.getElementById('shooter');
+let socialButton = document.getElementById('social');
+let sportButton = document.getElementById('sport');
+let strategyButton = document.getElementById('strategy');
+
+allButton.addEventListener('click', function(){changePlatform("&platform=all")});
+pcButton.addEventListener('click', function(){changePlatform("&platform=pc")});
+browserButton.addEventListener('click', function(){changePlatform("&platform=browser")});
+
+homeButton.addEventListener('click', function(){changeCategory("sort-by=popularity")});
+animeButton.addEventListener('click', function(){changeCategory("category=anime")});
+fantasyButton.addEventListener('click', function(){changeCategory("category=fantasy")});
+mmorpgButton.addEventListener('click', function(){changeCategory("category=mmorpg")});
+racingButton.addEventListener('click', function(){changeCategory("category=racing")});
+sciFiButton.addEventListener('click', function(){changeCategory("category=sci-fi")});
+shooterButton.addEventListener('click', function(){changeCategory("category=shooter")});
+socialButton.addEventListener('click', function(){changeCategory("category=social")});
+sportButton.addEventListener('click', function(){changeCategory("category=sport")});
+strategyButton.addEventListener('click', function(){changeCategory("category=strategy")});
+
 /*
 let loadButton = document.getElementById('load-more-button');
 loadButton.addEventListener('click', searchInApi);
-
-let pcButton = document.getElementById('pc-button');
-let mmorpgButton = document.getElementById('mmorpg-button');
-pcButton.addEventListener('click', function(){changePlatform("&platform=pc")});
-mmorpgButton.addEventListener('click', function(){changeGenre("genre=mmorpg")});
-
-function changeGenre(selectedGenre) {
-  currentGenre = selectedGenre;
-  currentUrl = currentGenre + currentGenre;
-  searchInApi(currentUrl);
-}
+*/
 
 function changePlatform(selectedPlatform) {
+  listCounting = 0;
   currentPlatform = selectedPlatform;
-  currentUrl = currentGenre + currentPlatform;
+  currentUrl = currentCategory + currentPlatform;
   searchInApi(currentUrl);
 }
-*/
+
+function changeCategory(selectedCategory) {
+  listCounting = 0;
+  currentCategory = selectedCategory;
+  currentUrl = currentCategory + currentPlatform;
+  searchInApi(currentUrl);
+}
+
 // Coloca o método "GET" e a chave de acesso a API em uma const.
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '8986061a9cmsh5eca69595d7c116p175199jsn2ef0c3a4413c',
-		'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'
-	}
-};
 
 // função que cria o card dos jogos usando o conteúdo da struct recebida da API
 function createCard(data) {
@@ -60,14 +91,14 @@ function createCard(data) {
 }
 
 // função que acessa a API
-function searchInApi(currentUrl) { // como exemplo, está buscando por popularidade e 
-                         // para todas as plataformas(pc e browser)
-    fetch(`https://free-to-play-games-database.p.rapidapi.com/api/games?${currentUrl}`, options)
-        .then((response) => {
-            response.json()                  // se der certo, recebe a struct
-            .then(data => createCard(data)); // com os dados dos jogos, e chama
-        })                                   // a função que cria os cards.              
-        .catch(() => alert("Houve algum erro!"));
+function searchInApi(currentUrl) { 
+  gamesList.innerHTML = '';
+  fetch(`https://free-to-play-games-database.p.rapidapi.com/api/games?${currentUrl}`, options)
+    .then((response) => {
+      response.json()                  // se der certo, recebe a struct
+      .then(data => createCard(data)); // com os dados dos jogos, e chama
+    })                                   // a função que cria os cards.              
+  .catch(() => alert("Houve algum erro!"));
 }       // se der errado, exibe mensagem de erro na tela.
 
 searchInApi(currentUrl);
