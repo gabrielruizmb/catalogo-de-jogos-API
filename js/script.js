@@ -8,7 +8,6 @@ const options = {
 
 // Pega a section do html que irá conter os cards dos jogos.
 let gamesList = document.getElementById('games_list');
-let listCounting = 0;
 
 let currentCategory = 'sort-by=popularity';
 let currentPlatform = '&platform=all';
@@ -44,12 +43,18 @@ socialButton.addEventListener('click', function(){changeCategory("category=socia
 sportButton.addEventListener('click', function(){changeCategory("category=sport")});
 strategyButton.addEventListener('click', function(){changeCategory("category=strategy")});
 
-/*
-let loadButton = document.getElementById('load-more-button');
-loadButton.addEventListener('click', searchInApi);
-*/
+let listCounting = 0;
+let loadButton = document.getElementById('load-button');
+loadButton.addEventListener('click', loadGames);
+
+loadGames();
+
+function loadGames() {
+  searchInApi(currentUrl);
+}
 
 function changePlatform(selectedPlatform) {
+  gamesList.innerHTML = '';
   listCounting = 0;
   currentPlatform = selectedPlatform;
   currentUrl = currentCategory + currentPlatform;
@@ -57,6 +62,7 @@ function changePlatform(selectedPlatform) {
 }
 
 function changeCategory(selectedCategory) {
+  gamesList.innerHTML = '';
   listCounting = 0;
   currentCategory = selectedCategory;
   currentUrl = currentCategory + currentPlatform;
@@ -73,11 +79,13 @@ function createCard(data) {
     gameCard.className = 'game_card';
     gameCard.innerHTML = `
         <div id="content">
+          <a href="${data[i].game_url}" target="blank">
           <img
             id="thumbnail"
             src="${data[i].thumbnail}"
             alt="narutera"
           />
+          </a>
         </div>
         <h1 id="title">${data[i].title}</h1>
         <div id="game_type">
@@ -92,7 +100,6 @@ function createCard(data) {
 
 // função que acessa a API
 function searchInApi(currentUrl) { 
-  gamesList.innerHTML = '';
   fetch(`https://free-to-play-games-database.p.rapidapi.com/api/games?${currentUrl}`, options)
     .then((response) => {
       response.json()                  // se der certo, recebe a struct
@@ -100,5 +107,3 @@ function searchInApi(currentUrl) {
     })                                   // a função que cria os cards.              
   .catch(() => alert("Houve algum erro!"));
 }       // se der errado, exibe mensagem de erro na tela.
-
-searchInApi(currentUrl);
