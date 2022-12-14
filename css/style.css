@@ -299,7 +299,8 @@ input[type="radio"] {
   background-color: rgb(98, 56, 169, 0.7);
 }
 
-#game_info , #game_type {
+#game_info,
+#game_type {
   padding-left: 5px;
 }
 
