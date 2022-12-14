@@ -167,13 +167,17 @@ input[type="radio"] {
 
 /* ----- GAME SECTION ----- */
 
+#game_section {
+
+}
+
 #games_list {
   min-width: 380px;
 
   display: grid;
   grid-column: 2/7;
   grid-auto-rows: 60%; /* alterar caso queria mudar espaçamento */
-  grid-template-columns: unset; /* não mexer */
+  grid-template-columns: 1fr 1fr 1fr; /* não mexer */
   grid-template-rows: unset; /* não mexer */
   overflow: scroll;
 
@@ -183,14 +187,20 @@ input[type="radio"] {
   color: var(--font-color);
 }
 
+#game_card {
+  align-self: center;
+  justify-self: center;
+}
+
 #game_card:first-child {
-  grid-column: 2/4;
+  grid-column: 1/4;
+  background-color: var(--main-color);
+  border-radius: 20px;
 }
 
 #game_card:first-child #thumbnail{
   width: 500px;
   height: 230px;
-  transform: translateX(-10%);
 }
 
 #thumbnail {
