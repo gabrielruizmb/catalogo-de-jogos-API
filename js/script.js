@@ -114,8 +114,8 @@ function createCard(data) {
           </div>
           <div id="game_info">
             <h1 id="title">${data[i].title}</h1>
-            <input type="checkbox" id="fav_button${i}" class="fav_btn" />
-            <label for="fav_button${i}">&#x1F90D;</label>
+            <input type="checkbox" id="fav_${data[i].id}" class="fav_btn" />
+            <label for="fav_${data[i].id}">&#x1F90D;</label>
           </div>
           <div id="game_type">
             <p id="genre">${data[i].genre}</p>
@@ -127,9 +127,10 @@ function createCard(data) {
   listCounting += 10;
   let loadbtn = document.createElement("button");
   loadbtn.id = "load_button";
+  loadbtn.addEventListener("click", loadGames);
   loadbtn.innerHTML = `
       Carregar mais
-    `;
+    `
   gamesList.appendChild(loadbtn);
 }
 
