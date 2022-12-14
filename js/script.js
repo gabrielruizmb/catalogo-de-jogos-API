@@ -45,10 +45,8 @@ const options = {
   strategyButton.addEventListener('click', function(){changeCategory("category=strategy")});
   
   let listCounting = 0;
-  let loadButton = document.getElementById('load-button');
+  let loadButton = document.getElementById('load_button');
   loadButton.addEventListener('click', loadGames);
-  
-  loadGames();
   
   function loadGames() {
     searchInApi(currentUrl);
@@ -78,7 +76,7 @@ const options = {
     for (let i = listCounting; i < listCounting + 10; i++){
       let gameCard = document.createElement('article');
       gameCard.className = 'game_card';
-      gameCard.setAttribute("id", "game_card");
+      gameCard.id = "game_card";
       gameCard.innerHTML = `
           <div id="content">
             <a href="${data[i].game_url}" target="blank">
@@ -91,8 +89,8 @@ const options = {
           </div>
           <div id="game_info">
             <h1 id="title">${data[i].title}</h1>
-            <input type="checkbox" id="fav_button1" class="fav_btn" />
-            <label for="fav_button1">&#x1F90D;</label>
+            <input type="checkbox" id="fav_button${i}" class="fav_btn" />
+            <label for="fav_button${i}">&#x1F90D;</label>
           </div>
           <div id="game_type">
             <p id="genre">${data[i].genre}</p>
@@ -102,6 +100,12 @@ const options = {
       gamesList.appendChild(gameCard);
     }
     listCounting += 10;
+    let loadbtn = document.createElement('button');
+    loadbtn.id = 'load_button';
+    loadbtn.innerHTML=`
+      Carregar mais
+    `;
+    gamesList.appendChild(loadbtn);
   }
   
   // função que acessa a API

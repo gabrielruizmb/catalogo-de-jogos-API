@@ -11,6 +11,9 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+
+  font-family: "Poppins", sans-serif;
+  font-size: 1em;
 }
 
 body {
@@ -21,8 +24,6 @@ body {
   grid-template-columns: 1fr 7fr;
   grid-template-rows: 10vh auto 10vh;
 
-  font-family: "Poppins", sans-serif;
-  font-size: 1em;
   color: var(--font-color);
 
   background: var(--secondary-color);
@@ -196,7 +197,7 @@ input[type="radio"] {
   grid-column: 1/4;
   background-color: var(--main-color);
   border-radius: 20px;
-  padding: 20px 5px;
+  padding: 15px 5px;
 }
 
 #game_card:first-child #thumbnail {
@@ -262,7 +263,7 @@ input[type="radio"] {
 }
 
 #game_type p {
-  padding: 2px 5px;
+  padding: 1px 3px;
 
   border: 2px solid rgb(97, 56, 169);
   border-radius: 5px;
@@ -274,18 +275,15 @@ input[type="radio"] {
   appearance: none;
 }
 
-#game_section_btn {
+#load_button {
+  padding: 10px 20px;
+  margin: auto;
+
   display: flex;
   align-items: center;
   justify-content: center;
+  grid-column: 1/4;
 
-  grid-column: 2/3;
-}
-
-#game_section_btn button {
-  padding: 10px 20px;
-
-  font-family: "Poppins", sans-serif;
   font-size: 1.4em;
   color: var(--font-color);
 
@@ -297,7 +295,7 @@ input[type="radio"] {
   box-shadow: 4px 6px 5px rgba(0, 0, 0, 0.15);
 }
 
-#game_section_btn button:hover {
+#load_button:hover {
   background-color: rgb(98, 56, 169, 0.7);
 }
 
@@ -376,7 +374,6 @@ input[type="radio"] {
   #game_card:first-child {
     grid-column: 1/2;
     margin-top: 30px;
-    transform: translateX(-2%);
   }
 
   #game_card:first-child #thumbnail {
