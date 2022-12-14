@@ -76,7 +76,7 @@ const options = {
   function createCard(data) {
     
     for (let i = listCounting; i < listCounting + 10; i++){
-      let gameCard = document.createElement('article')
+      let gameCard = document.createElement('article');
       gameCard.className = 'game_card';
       gameCard.setAttribute("id", "game_card");
       gameCard.innerHTML = `
@@ -89,12 +89,14 @@ const options = {
             />
             </a>
           </div>
-          <h1 id="title">${data[i].title}</h1>
+          <div id="game_info">
+            <h1 id="title">${data[i].title}</h1>
+            <input type="checkbox" id="fav_button1" class="fav_btn" />
+            <label for="fav_button1">&#x1F90D;</label>
+          </div>
           <div id="game_type">
             <p id="genre">${data[i].genre}</p>
             <p id="platform">${data[i].platform}</p>
-            <input type="checkbox" id="fav_button1" class="fav_btn" />
-            <label for="fav_button1">&#x1F90D;</label>
           </div>
       `;
       gamesList.appendChild(gameCard);
