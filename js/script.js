@@ -70,7 +70,7 @@ socialButton.addEventListener("click", function () {
   changeCategory("category=social");
 });
 sportButton.addEventListener("click", function () {
-  changeCategory("category=sport");
+  changeCategory("category=sports");
 });
 strategyButton.addEventListener("click", function () {
   changeCategory("category=strategy");
