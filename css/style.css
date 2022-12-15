@@ -11,37 +11,51 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+
+  font-family: "Poppins", sans-serif;
+  font-size: 1em;
 }
 
 body {
-  font-family: "Poppins", sans-serif;
-  font-size: 1rem;
+  width: 100vw;
+  height: 100vh;
+
+  display: grid;
+  grid-template-columns: 1fr 7fr;
+  grid-template-rows: 10vh auto 7vh;
+
+  color: var(--font-color);
+
   background: var(--secondary-color);
 }
 
+/* ----- HEADER ----- */
+
 header {
+  padding: 11px 0;
+  min-height: 50px;
+
   display: flex;
-  width: 100vw;
-  padding: 15px;
+  grid-column: 1/7;
+  gap: 23%;
+
   background: var(--header-footer-color);
 }
 
-#logo-image {
-  width: 60px;
-  height: 50px;
-  margin-right: 10px;
-}
-
 header h1 {
-  font-size: 1.4rem;
-  color: var(--font-color);
+  padding-left: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.2em;
 }
 
 nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
 }
 
 .nav_links {
@@ -59,15 +73,11 @@ nav {
 }
 
 .nav_links label {
-  width: 127px;
-  height: 48px;
+  padding: 10px 20px;
 
   display: flex;
   align-items: center;
   justify-content: space-around;
-
-  font-size: 1rem;
-  color: var(--font-color);
 
   border: none;
   outline: none;
@@ -75,15 +85,33 @@ nav {
   text-decoration: none;
 }
 
+.nav_links input:checked ~ label {
+  background: var(--main-color);
+  border-radius: 10px;
+}
+
+.nav_links input ~ label:hover {
+  background: rgb(98, 56, 169, 0.7);
+  border-radius: 10px;
+}
+
+/* ----- SIDEBAR ----- */
+
 aside {
-  float: left;
-  padding: 30px;
+  min-width: 150px;
+  min-height: 500px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column: 1/2;
+
+  overflow: scroll;
+
   background: var(--main-color);
 }
 
 aside ul {
-  width: 100%;
-  height: inherit;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -92,12 +120,9 @@ aside ul {
   list-style: none;
 }
 
-aside ul li {
-  margin-bottom: 20px;
-}
-
 .side_radio {
   display: flex;
+  padding: 2px;
 }
 
 .side_radio label {
@@ -108,8 +133,7 @@ aside ul li {
   align-items: center;
   justify-content: space-around;
 
-  font-size: 1rem;
-  color: var(--font-color);
+  font-size: 1em;
 
   border: none;
   outline: none;
@@ -121,23 +145,13 @@ input[type="radio"] {
   appearance: none;
 }
 
-.side_radio input:checked~label {
+.side_radio input:checked ~ label {
   background-color: rgb(28, 34, 41, 0.7);
   border-radius: 10px;
 }
 
-.side_radio input~label:hover {
+.side_radio input ~ label:hover {
   background-color: rgb(28, 34, 41, 0.5);
-  border-radius: 10px;
-}
-
-.nav_links input:checked~label {
-  background: var(--main-color);
-  border-radius: 10px;
-}
-
-.nav_links input~label:hover {
-  background: rgb(98, 56, 169, 0.7);
   border-radius: 10px;
 }
 
@@ -151,87 +165,101 @@ input[type="radio"] {
   height: 20px;
 }
 
-#games-section {
-  display: flex;
-  flex-direction: row;
-  color: var(--font-color);
-}
-
-#games-section section {
-  margin-left: 2vw;
-}
+/* ----- GAME SECTION ----- */
 
 #games_list {
+  min-width: 380px;
+
   display: grid;
+  grid-column: 2/7;
+  grid-auto-rows: 65%; /* alterar caso queria mudar espaçamento */
   grid-template-columns: 1fr 1fr 1fr;
-}
+  grid-template-rows: unset;
+  overflow: scroll;
 
-.game_card {
-  margin: 20px;
-}
+  align-items: center;
+  justify-content: space-evenly;
 
-.game_card:first-child {
-  grid-column-start: 2;
-  grid-column-end: 4;
-}
-
-#load-button-box {
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  cursor: pointer;
-}
-
-#load-button {
-  padding: 10px 20px;
-  border-radius: 10px;
-  background-color: var(--main-color);
-  box-shadow: 4px 6px 5px rgba(0, 0, 0, 0.15);
   color: var(--font-color);
 }
 
-/* #games_list {
-  width: 75%;
-  position: relative;
-  left: 246px;
-  top: 70px;
-  flex-direction: column;
-  height: fit-content;
+#games_container {
   display: flex;
-  z-index: -1;
-  max-width: 1190px;
-  flex-wrap: wrap;
-  margin: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #game_card {
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 3%;
-  margin-top: 2%;
-  border: 1px solid black;
-  grid-column-start: 2;
-  grid-column-end: 4;
-  width: fit-content;
-} */
-/*
-.game_card:first-child #thumbnail{
-  width: 438px;
-  height: 247.2px;
-}
-*/
-#thumbnail {
-  border: 4.5px solid rgb(98, 56, 169);
-  border-radius: 20px;
-  width: 292px;
-  height: 164.8px;
+  align-self: center;
+  justify-self: center;
 }
 
-#short_description {
-  max-width: 350px;
-  text-align: justify;
+#title {
+  font-size: 1em;
+}
+
+#game_card:first-child {
+  grid-column: 1/4;
+  background-color: var(--main-color);
+  border-radius: 20px;
+  padding: 15px 5px;
+}
+
+#game_card:first-child #thumbnail {
+  width: 500px;
+  height: 230px;
+}
+
+#game_card:first-child #game_type p {
+  border: 2px solid rgb(28, 34, 41, 0.5);
+  background-color: rgb(28, 34, 41, 0.7);
+}
+
+#game_card:first-child #game_info label:hover {
+  background-color: rgb(28, 34, 41, 0.5);
+  opacity: 0.7;
+}
+
+#game_card:first-child #game_info input:checked ~ label {
+  background-color: rgb(28, 34, 41, 0.7);
+}
+
+#thumbnail {
+  cursor: pointer;
+
+  border: 4.5px solid rgb(98, 56, 169);
+  border-radius: 20px;
+  opacity: 0.8;
+}
+
+#game_info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 5px;
+}
+
+#game_info label {
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  border-radius: 50%;
+}
+
+#game_info label:hover {
+  background-color: var(--main-color);
+  opacity: 0.7;
+}
+
+#game_info input:checked ~ label {
+  background-color: var(--main-color);
 }
 
 #game_type {
@@ -241,7 +269,7 @@ input[type="radio"] {
 }
 
 #game_type p {
-  padding: 2px 5px;
+  padding: 1px 3px;
 
   border: 2px solid rgb(97, 56, 169);
   border-radius: 5px;
@@ -249,43 +277,135 @@ input[type="radio"] {
   background-color: rgb(98, 56, 169, 0.7);
 }
 
+.fav_btn {
+  appearance: none;
+  background: transparent;
+  border: none !important;
+  font-size: 0;
+}
 
-#footer {
-  width: 100%;
-  height: 5vh;
+#load_button {
+  padding: 10px 20px;
+  margin: auto;
+
   display: flex;
   align-items: center;
   justify-content: center;
+  grid-column: 1/4;
+
+  font-size: 1.4em;
+  color: var(--font-color);
+
+  cursor: pointer;
+
+  border: none;
+  border-radius: 10px;
+  background-color: var(--main-color);
+  box-shadow: 4px 6px 5px rgba(0, 0, 0, 0.15);
+}
+
+#load_button:hover {
+  background-color: rgb(98, 56, 169, 0.7);
+}
+
+#game_info,
+#game_type {
+  padding-left: 5px;
+}
+
+/* ----- FOOTER ----- */
+
+#footer {
+  min-height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  grid-column: 1/7;
 
   background: var(--header-footer-color);
 }
 
 #footer h1 {
-  font-size: 1.4rem;
+  font-size: 1.2em;
 }
 
 ::-webkit-scrollbar {
   display: none;
 }
 
-@media (max-width: 1200px) {
-  #games_list {
-    grid-template-columns: 1fr 1fr;
+/* ----- MEDIA QUERY ----- */
+
+@media (max-width: 1300px) {
+  .side_radio label {
+    width: 130px;
+    height: 40px;
   }
 
-  .game_card:first-child {
-    grid-column-start: 1;
-    grid-column-end: 1;
+  .nav_links li {
+    padding: 0px 5px;
+  }
+
+  #games_list {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  #game_card {
+    align-self: center;
+    justify-self: center;
+  }
+
+  #game_card:first-child {
+    grid-column: 1/3;
+    margin-top: 30px;
+  }
+
+  #load_button {
+    grid-column: 1/3;
+    align-self: center;
+    justify-self: center;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 1100px) {
+  header {
+    gap: 16%;
+  }
+}
+
+@media (max-width: 910px) {
   #games_list {
     grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
   }
 
-  .game_card:first-child {
-    grid-column-start: 1;
-    grid-column-end: 1;
+  #game_card:first-child {
+    grid-column: 1/2;
+    margin-top: 30px;
+  }
+
+  #game_card:first-child #thumbnail {
+    width: 374px;
+    height: 215px;
+  }
+
+  #load_button {
+    grid-column: 1/2;
+    align-self: center;
+    justify-self: center;
+  }
+}
+
+@media (max-width: 850px) {
+  header {
+    gap: 8%;
+  }
+}
+
+@media (max-width: 600px) {
+  header {
+    gap: 1%;
   }
 }
