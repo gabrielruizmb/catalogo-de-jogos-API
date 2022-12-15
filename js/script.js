@@ -138,6 +138,9 @@ function createCard(data) {
   let loadbtn = document.createElement("button");
   loadbtn.id = "load_button";
   loadbtn.addEventListener("click", loadGames);
+  loadbtn.addEventListener("click", () =>{
+    loadbtn.style.display = 'none';
+  });
   loadbtn.innerHTML = `
       Carregar mais
     `;
