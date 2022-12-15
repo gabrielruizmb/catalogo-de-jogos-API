@@ -76,10 +76,7 @@ strategyButton.addEventListener("click", function () {
   changeCategory("category=strategy");
 });
 
-
 let listCounting = 0;
-let loadButton = document.getElementById("load_button");
-loadButton.addEventListener("click", loadGames);
 
 function loadGames() {
   searchInApi(currentUrl);
@@ -139,7 +136,7 @@ function createCard(data) {
   loadbtn.id = "load_button";
   loadbtn.addEventListener("click", loadGames);
   loadbtn.addEventListener("click", () =>{
-    loadbtn.style.display = 'none';
+    gamesList.removeChild(loadbtn);
   });
   loadbtn.innerHTML = `
       Carregar mais
