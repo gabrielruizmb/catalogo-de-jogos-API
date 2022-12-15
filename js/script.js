@@ -114,6 +114,7 @@ function createCard(data) {
               id="thumbnail"
               src="${data[i].thumbnail}"
               alt="${data[i].title}"
+              title="Clique para abrir o site oficial do jogo."
             />
             </a>
           </div>
