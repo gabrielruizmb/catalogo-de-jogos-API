@@ -12,6 +12,7 @@ let gamesList = document.getElementById("games_list");
 let currentCategory = "sort-by=popularity";
 let currentPlatform = "&platform=all";
 let currentUrl = currentCategory + currentPlatform;
+let isFavorite = false;
 
 let allButton = document.getElementById("all");
 let pcButton = document.getElementById("windows");
@@ -32,6 +33,11 @@ let strategyButton = document.getElementById("strategy");
 allButton.addEventListener("click", function () {
   changePlatform("&platform=all");
 });
+
+favButton.addEventListener("click", function () {
+  changePlatform("&platform=all", true);
+});
+
 pcButton.addEventListener("click", function () {
   changePlatform("&platform=pc");
 });
@@ -70,6 +76,7 @@ strategyButton.addEventListener("click", function () {
   changeCategory("category=strategy");
 });
 
+
 let listCounting = 0;
 let loadButton = document.getElementById("load_button");
 loadButton.addEventListener("click", loadGames);
@@ -78,12 +85,13 @@ function loadGames() {
   searchInApi(currentUrl);
 }
 
-function changePlatform(selectedPlatform) {
+function changePlatform(selectedPlatform, Favorite) {
   gamesList.innerHTML = "";
+  isFavorite = Favorite;
   listCounting = 0;
   currentPlatform = selectedPlatform;
   currentUrl = currentCategory + currentPlatform;
-  searchInApi(currentUrl);
+  searchInApi(currentUrl)
 }
 
 function changeCategory(selectedCategory) {
@@ -114,7 +122,9 @@ function createCard(data) {
           </div>
           <div id="game_info">
             <h1 id="title">${data[i].title}</h1>
-            <input type="checkbox" id="fav_${data[i].id}" class="fav_btn" />
+            <button type="checkbox" id="fav_${
+              data[i].id
+            }" class="fav_btn" onclick="saveFav(${data[i].id})"></button>
             <label for="fav_${data[i].id}">&#x1F90D;</label>
           </div>
           <div id="game_type">
@@ -130,7 +140,7 @@ function createCard(data) {
   loadbtn.addEventListener("click", loadGames);
   loadbtn.innerHTML = `
       Carregar mais
-    `
+    `;
   gamesList.appendChild(loadbtn);
 }
 
@@ -143,7 +153,28 @@ function searchInApi(currentUrl) {
     .then((response) => {
       response
         .json() // se der certo, recebe a struct
-        .then((data) => createCard(data)); // com os dados dos jogos, e chama
+        .then((data) => {
+          let games = isFavorite ? data.filter(game => JSON.parse(localStorage.favorites).filter(favorite => favorite == game.id).length != 0) : data;
+          createCard(games)
+        }); // com os dados dos jogos, e chama
     }) // a função que cria os cards.
     .catch(() => alert("Houve algum erro!"));
 } // se der errado, exibe mensagem de erro na tela.
+
+if (!localStorage.favorites) localStorage.favorites = "[]";
+
+function saveFav(id) {
+  const favorites = JSON.parse(localStorage.favorites);
+  if (favorites.includes(id)) {
+    document.getElementById(`fav_${id}`).classList.remove("shining-star");
+    localStorage.favorites = JSON.stringify(
+      favorites.filter((idFav) => idFav !== id)
+    );
+  } else {
+    document.getElementById(`fav_${id}`).classList.add("shining-star");
+    favorites.push(id);
+    localStorage.favorites = JSON.stringify(favorites);
+  }
+  
+  changePlatform(currentPlatform, isFavorite);
+}
