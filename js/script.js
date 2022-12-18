@@ -121,7 +121,7 @@ function createCard(data) {
           <div id="game_info">
             <h1 id="title">${data[i].title}</h1>
             <button type="checkbox" id="fav_${data[i].id}" class="fav_btn" onclick="saveFav(${data[i].id})"></button>
-            <label for="fav_${data[i].id}">&#x1F90D;</label>
+            <label for="fav_${data[i].id}" title="favoritar/desfavoritar">&#x1F90D;</label>
           </div>
           <div id="game_type">
             <p id="genre">${data[i].genre}</p>
