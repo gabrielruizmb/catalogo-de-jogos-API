@@ -4,6 +4,6 @@
   
   ![image](https://user-images.githubusercontent.com/105463724/207738426-204bde9a-e237-401a-9005-68e21abc5f63.png)
 
-  Link para acessar o site: https://grupo4-integrador.github.io/Projeto-Mensal-API/
+  Link para acessar o site: https://gabrielruizmb.github.io/catalogo-de-jogos-API/
   
   Equipe de desenvolvimento: Caio Busnello, Gabriel Ruiz, Gustavo Muller, Kauê Sanchez e Pedro Henrique.
